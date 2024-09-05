@@ -57,7 +57,7 @@
         @csrf
         @method('DELETE')
         <button type="submit" class="text-red-500 hover:underline">Hapus</button>
-    </form>
+            </form>
     </td>
     </tr>
     @endforeach
