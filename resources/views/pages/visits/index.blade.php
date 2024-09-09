@@ -1,9 +1,9 @@
 <x-app-layout>
     <x-slot name="header">
     <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-    Halaman Facilities
+    Halaman Pengunjung
     </h2>
-    <div class="text-sm text-gray-500">Halaman untuk memanajemen Data Facilities</div>
+    <div class="text-sm text-gray-500">Halaman untuk memanajemen Data Pengunjung</div>
     </x-slot>
     <div class="py-12">
     @if (session('success'))
@@ -17,21 +17,27 @@
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
     <div class="bg-white rounded-md p-4 mb-4">
     <div class="flex justify-between mb-3">
-    <div class="mb-2 font-bold">Data Facilities</div>
-    <a href="{{ route('facilities.create') }}" class="bg-blue-950 text-white rounded-md text-sm py-2 px-3">Tambah Data Fasilitas</a>
+    <div class="mb-2 font-bold">Data Visits</div>
+    <a href="{{ route('visits.create') }}" class="bg-blue-950 text-white rounded-md text-sm py-2 px-3">Tambah Data Visits</a>
     </div>
     <div class="relative overflow-x-auto">
     <table class="w-full text-sm text-left rtl:text-right text-gray-500 ">
     <thead class="text-xs text-gray-700 uppercase bg-gray-50 ">
     <tr>
     <th class="px-6 py-3">
-    No
-    </th>
-    <th class="px-6 py-3">
     Nama
     </th>
     <th class="px-6 py-3">
-    quantity
+    Tanggal
+    </th>
+    <th class="px-6 py-3">
+    No.Telpon
+    </th>
+    <th class="px-6 py-3">
+    Agency
+    </th>
+    <th class="px-6 py-3">
+    Tanggal Dibuat
     </th>
     <th class="px-6 py-3">
     Action
@@ -39,25 +45,27 @@
     </tr>
     </thead>
     <tbody>
-    @foreach ($facilities as $facilities)
+    @foreach ($visits as $visits )
     <tr class="bg-white border-b">
     <th scope="row"
     class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-black">
-    {{ $loop->iteration }}
-    </th>
-    <th scope="row"
-    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-black">
-    {{ $facilities->name }}
+    {{ $visits->name }}
     </th>
     <td class="px-6 py-4">
-    {{ $facilities->quantity }}
+    {{ $visits->date }}
     </td>
     <td class="px-6 py-4">
-    {{ $facilities->created_at }}
+    {{ $visits->phone }}
     </td>
     <td class="px-6 py-4">
-    <a href="{{ route('facilities.edit', $facilities->id) }}" class="text-blue-950 hover:underline">Edit</a>
-    <form action="{{ route('facilities.destroy', $facilities->id) }}" method="POST" class="inline">
+    {{ $visits->agency }}
+    </td>
+    <td class="px-6 py-4">
+    {{ $visits->created_at }}
+    </td>
+    <td class="px-6 py-4">
+    <a href="{{ route('visits.edit', $visits->id) }}" class="text-blue-950 hover:underline">Edit</a>
+    <form action="{{ route('visits.destroy', $visits->id) }}" method="POST" class="inline">
         @csrf
         @method('DELETE')
         <button type="submit" class="text-red-500 hover:underline">Hapus</button>

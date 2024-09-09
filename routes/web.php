@@ -8,6 +8,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\BookshelfsController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\FacilitiesController;
+use App\Http\Controllers\VisitsController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -63,9 +64,17 @@ Route::middleware('auth')->group(function () {
     Route::get('/bookshelfs', [BookshelfsController::class, 'index'])->name('bookshelfs.index');
     Route::get('/bookshelfs/create', [BookshelfsController::class, 'create'])->name('bookshelfs.create');
     Route::post('/bookshelfs', [BookshelfsController::class, 'store'])->name('bookshelfs.store');
-    Route::get('/bookshelfs/{bookshelf}/edit', [BookshelfsController::class, 'edit'])->name('bookshelfs.edit');
-    Route::put('/bookshelfs/{bookshelf}/edit', [BookshelfsController::class, 'update'])->name('bookshelfs.update');
-    Route::delete('/bookshelfs/{bookshelf}', [BookshelfsController::class, 'destroy'])->name('bookshelfs.destroy');
+    Route::get('/bookshelfs/{bookshelfs}/edit', [BookshelfsController::class, 'edit'])->name('bookshelfs.edit');
+    Route::put('/bookshelfs/{bookshelfs}/edit', [BookshelfsController::class, 'update'])->name('bookshelfs.update');
+    Route::delete('/bookshelfs/{bookshelfs}', [BookshelfsController::class, 'destroy'])->name('bookshelfs.destroy');
+
+    // visits route
+    Route::get('/visits', [VisitsController::class, 'index'])->name('visits.index');
+    Route::get('/visits/create', [VisitsController::class, 'create'])->name('visits.create');
+    Route::post('/visits', [VisitsController::class, 'store'])->name('visits.store');
+    Route::get('/visits/{visits}/edit', [VisitsController::class, 'edit'])->name('visits.edit');
+    Route::put('/visits/{visits}/edit', [VisitsController::class, 'update'])->name('visits.update');
+    Route::delete('/visits/{visits}', [VisitsController::class, 'destroy'])->name('visits.destroy');
 
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

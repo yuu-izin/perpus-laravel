@@ -54,6 +54,11 @@
                 <x-nav-link :href="route('bookshelfs.index')" :active="request()->routeIs('bookshelfs.*')">
                     {{ __('Bookshelfs') }}
                 </x-nav-link>
+
+                {{-- visits --}}
+                <x-nav-link :href="route('visits.index')" :active="request()->routeIs('visits.*')">
+                    {{ __('Visits') }}
+                </x-nav-link>
             </div>
 
             <!-- Settings Dropdown -->

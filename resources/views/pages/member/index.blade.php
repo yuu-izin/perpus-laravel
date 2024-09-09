@@ -18,7 +18,7 @@
     <div class="bg-white rounded-md p-4 mb-4">
     <div class="flex justify-between mb-3">
     <div class="mb-2 font-bold">Data Member</div>
-    <a href="{{ route('member.create') }}" class="bg-blue-950 text-white rounded-md text-sm py-2 px-3">Tambah Data User</a>
+    <a href="{{ route('member.create') }}" class="bg-blue-950 text-white rounded-md text-sm py-2 px-3">Tambah Data Member</a>
     </div>
     <div class="relative overflow-x-auto">
     <table class="w-full text-sm text-left rtl:text-right text-gray-500 ">

@@ -9,8 +9,8 @@ class BookshelfsController extends Controller
 {
     public function index()
     {
-        // Panggil metode all() pada model Bookshelfs
         $bookshelfs = Bookshelfs::all();
+
         return view('pages.bookshelfs.index', compact('bookshelfs'));
     }
 
@@ -26,22 +26,21 @@ class BookshelfsController extends Controller
             'name' => ['required'],
         ]);
 
-        Bookshelfs::create([
+        $categories = Bookshelfs::create([
             'code' => $request->code,
             'name' => $request->name,
         ]);
 
-        session()->flash('success', 'Bookshelf created successfully');
+        session()->flash('success', 'Bookshelfs created successfully');
         return redirect()->route('bookshelfs.index');
     }
 
     public function edit(Bookshelfs $bookshelfs)
     {
-        // Pastikan nama variabel konsisten
         return view('pages.bookshelfs.edit', compact('bookshelfs'));
     }
 
-    public function update(Request $request, Bookshelfs $bookshelfs)
+    public function update(Bookshelfs $bookshelfs, Request $request)
     {
         $request->validate([
             'code' => ['required'],
@@ -53,7 +52,7 @@ class BookshelfsController extends Controller
             'name' => $request->name,
         ]);
 
-        session()->flash('success', 'Bookshelf updated successfully');
+        session()->flash('success', 'Bookshelfs updated successfully');
         return redirect()->route('bookshelfs.index');
     }
 
@@ -61,7 +60,7 @@ class BookshelfsController extends Controller
     {
         $bookshelfs->delete();
 
-        session()->flash('success', 'Bookshelf deleted successfully');
-        return redirect()->route('bookshelfs.index');
+        session()->flash('success', 'Bookshelfs deleted successfully');
+        return redirect()->route('bookshelfs .index');
     }
 }
