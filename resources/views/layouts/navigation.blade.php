@@ -49,6 +49,11 @@
                 <x-nav-link :href="route('categories.index')" :active="request()->routeIs('categories.*')">
                     {{ __('Categories') }}
                 </x-nav-link>
+
+                {{-- bookshelfs --}}
+                <x-nav-link :href="route('bookshelfs.index')" :active="request()->routeIs('bookshelfs.*')">
+                    {{ __('Bookshelfs') }}
+                </x-nav-link>
             </div>
 
             <!-- Settings Dropdown -->

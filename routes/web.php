@@ -1,11 +1,11 @@
 <?php
 
-use App\Models\Categories;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\BookshelfsController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\FacilitiesController;
 
@@ -58,6 +58,15 @@ Route::middleware('auth')->group(function () {
     Route::get('/categories/{categories}/edit', [CategoriesController::class, 'edit'])->name('categories.edit');
     Route::put('/categories/{categories}/edit', [CategoriesController::class, 'update'])->name('categories.update');
     Route::delete('/categories/{categories}', [CategoriesController::class, 'destroy'])->name('categories.destroy');
+
+    // bookshelfs route
+    Route::get('/bookshelfs', [BookshelfsController::class, 'index'])->name('bookshelfs.index');
+    Route::get('/bookshelfs/create', [BookshelfsController::class, 'create'])->name('bookshelfs.create');
+    Route::post('/bookshelfs', [BookshelfsController::class, 'store'])->name('bookshelfs.store');
+    Route::get('/bookshelfs/{bookshelf}/edit', [BookshelfsController::class, 'edit'])->name('bookshelfs.edit');
+    Route::put('/bookshelfs/{bookshelf}/edit', [BookshelfsController::class, 'update'])->name('bookshelfs.update');
+    Route::delete('/bookshelfs/{bookshelf}', [BookshelfsController::class, 'destroy'])->name('bookshelfs.destroy');
+
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
