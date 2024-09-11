@@ -10,9 +10,16 @@ class Book extends Model
     use HasFactory;
 
     protected $fillable = [
+        'book_code_id',
         'title',
         'description',
         'year',
         'publisher',
     ];
+
+     // Relasi One To One
+    public function bookCode()
+    {
+        return $this->belongsTo(BookCode::class);
+    }
 }

@@ -46,16 +46,21 @@
                 </div>
 
                 {{-- categories --}}
-                <x-nav-link :href="route('categories.index')" :active="request()->routeIs('categories.*')">
-                    {{ __('Categories') }}
-                </x-nav-link>
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('categories.index')" :active="request()->routeIs('categories.*')">
+                        {{ __('Categories') }}
+                    </x-nav-link>
+                </div>
 
                 {{-- bookshelfs --}}
-                <x-nav-link :href="route('bookshelfs.index')" :active="request()->routeIs('bookshelfs.*')">
-                    {{ __('Bookshelfs') }}
-                </x-nav-link>
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('bookshelfs.index')" :active="request()->routeIs('bookshelfs.*')">
+                        {{ __('Bookshelfs') }}
+                    </x-nav-link>
+                </div>
 
                 {{-- visits --}}
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                 <x-nav-link :href="route('visits.index')" :active="request()->routeIs('visits.*')">
                     {{ __('Visits') }}
                 </x-nav-link>

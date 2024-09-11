@@ -32,6 +32,14 @@
                     <form action="{{ route('book.store') }}" method="POST" class="max-w-sm mx-auto">
                         @csrf
                         <div class="mb-5">
+                            <label for="code"
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Code</label>
+                            <input type="text" name="code"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                placeholder="Masukkan Code" required />
+                        </div>
+
+                        <div class="mb-5">
                             <label for="name"
                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Title</label>
                             <input type="text" name="title"
