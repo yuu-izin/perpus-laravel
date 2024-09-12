@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\UserProfiles;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -10,7 +11,7 @@ class UserController extends Controller
 {
     public function index()
     {
-        $users = User::all();
+        $users = User::with('profile')->get(); // Mengambil user beserta profile
 
         return view('pages.user.index', compact('users'));
     }
@@ -24,11 +25,21 @@ class UserController extends Controller
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'max:255', 'unique:'.User::class],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'confirmed'],
+            'nip' => ['required', 'string', 'max:50'],
+            'address' => ['required', 'string', 'max:255'],
+            'phone' => ['required', 'string', 'max:15'],
+        ]);
+
+        $profile = UserProfiles::create([
+            'nip' => $request->nip,
+            'address' => $request->address,
+            'phone' => $request->phone,
         ]);
 
         $user = User::create([
+            'profile_id' => $profile->id,
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
@@ -40,32 +51,57 @@ class UserController extends Controller
 
     public function edit(User $user)
     {
+        $user->load('profile');
         return view('pages.user.edit', compact('user'));
     }
 
     public function update(Request $request, User $user)
-    {
-        $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'max:255', 'unique:'.User::class],
-            'password' => ['required', 'confirmed'],
-        ]);
+{
+    $request->validate([
+        'name' => ['required', 'string', 'max:255'],
+        'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,'.$user->id],
+        'password' => ['nullable', 'confirmed'],
+        'nip' => ['required', 'string', 'max:50'],
+        'address' => ['required', 'string', 'max:255'],
+        'phone' => ['required', 'string', 'max:15'],
+    ]);
 
-        $user->update([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => $request->password ? Hash::make($request->password) : $user->password,
+        if ($user->profile) {
+        $user->profile->update([
+            'nip' => $request->nip,
+            'address' => $request->address,
+            'phone' => $request->phone,
         ]);
-
-        session()->flash('success', 'User update successfully');
-        return redirect()->route('user.index');
+    } else {
+        $user->profile()->create([
+            'nip' => $request->nip,
+            'address' => $request->address,
+            'phone' => $request->phone,
+        ]);
     }
 
-    public function destroy(User $user)
-    {
-        $user->delete();
+    $user->update([
+        'name' => $request->name,
+        'email' => $request->email,
+        'password' => $request->password ? Hash::make($request->password) : $user->password,
+    ]);
 
-        session()->flash('success', 'User deleted successfully');
-        return redirect()->route('user.index');
+    session()->flash('success', 'User updated successfully');
+    return redirect()->route('user.index');
+}
+
+
+
+public function destroy(User $user)
+{
+    if ($user->profile) {
+        $user->profile->delete();
     }
+
+    $user->delete();
+
+    session()->flash('success', 'User deleted successfully');
+    return redirect()->route('user.index');
+}
+
 }

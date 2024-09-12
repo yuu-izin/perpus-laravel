@@ -17,54 +17,48 @@
                     </x-nav-link>
                 </div>
 
-                {{-- user --}}
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('user.index')" :active="request()->routeIs('user.*')">
-                        {{ __('User') }}
-                    </x-nav-link>
-                </div>
-
-                {{-- book --}}
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('book.index')" :active="request()->routeIs('book.*')">
-                        {{ __('Book') }}
-                    </x-nav-link>
-                </div>
-
-                {{-- members --}}
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('member.index')" :active="request()->routeIs('member.*')">
-                        {{ __('Members') }}
-                    </x-nav-link>
-                </div>
-
-                {{-- facilities --}}
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('facilities.index')" :active="request()->routeIs('facilities.*')">
-                        {{ __('Facilities') }}
-                    </x-nav-link>
-                </div>
-
-                {{-- categories --}}
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('categories.index')" :active="request()->routeIs('categories.*')">
-                        {{ __('Categories') }}
-                    </x-nav-link>
-                </div>
-
-                {{-- bookshelfs --}}
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('bookshelfs.index')" :active="request()->routeIs('bookshelfs.*')">
-                        {{ __('Bookshelfs') }}
-                    </x-nav-link>
-                </div>
-
-                {{-- visits --}}
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                <x-nav-link :href="route('visits.index')" :active="request()->routeIs('visits.*')">
-                    {{ __('Visits') }}
+            <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                <x-nav-link :href="route('user.index')" :active="request()->routeIs('user.*')">
+                    {{ __('User') }}
                 </x-nav-link>
             </div>
+
+            <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                <x-nav-link :href="route('book.index')" :active="request()->routeIs('book.*')">
+                    {{ __('Book') }}
+                </x-nav-link>
+            </div>
+
+            <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                <x-nav-link :href="route('member.index')" :active="request()->routeIs('member.*')">
+                    {{ __('Members') }}
+                </x-nav-link>
+            </div>
+
+            <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                <x-nav-link :href="route('facilities.index')" :active="request()->routeIs('facilities.*')">
+                    {{ __('Facilities') }}
+                </x-nav-link>
+            </div>
+
+            <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                <x-nav-link :href="route('categories.index')" :active="request()->routeIs('categories.*')">
+                    {{ __('Categories') }}
+                </x-nav-link>
+            </div>
+
+            <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                <x-nav-link :href="route('bookshelfs.index')" :active="request()->routeIs('bookshelfs.*')">
+                    {{ __('Bookshelfs') }}
+                </x-nav-link>
+            </div>
+
+            <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                <x-nav-link :href="route('visits.index')" :active="request()->routeIs('visits.*')">
+                {{ __('Visits') }}
+                </x-nav-link>
+            </div>
+        </div>
 
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ms-6">

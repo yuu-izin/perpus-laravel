@@ -33,6 +33,13 @@
     @csrf
     @method('PUT')
     <div class="mb-5">
+    <label for="nip"
+    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nip</label>
+    <input type="text" name="nip" value="{{ $user->nip }}"
+    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+    placeholder="Masukkan Nip" required />
+    </div>
+    <div class="mb-5">
     <label for="name"
     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama</label>
     <input type="text" name="name" value="{{ $user->name }}"
@@ -45,6 +52,20 @@
     <input type="email" name="email" value="{{ $user->email }}"
     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
     placeholder="Masukkan Email" required />
+    </div>
+    <div class="mt-5">
+    <label for="address"
+    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Alamat</label>
+    <input type="text" name="address" value="{{ $user->address }}"
+    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
+    placeholder="Masukkan Alamat" required />
+    </div>
+    <div class="mt-5">
+    <label for="phone"
+    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">No.Telepon</label>
+    <input type="text" name="phone" value="{{ $user->phone }}"
+    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
+    placeholder="Masukkan No.Telepon" required />
     </div>
     <div class="mt-5">
     <label for="password"

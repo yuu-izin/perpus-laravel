@@ -25,10 +25,19 @@
     <thead class="text-xs text-gray-700 uppercase bg-gray-50 ">
     <tr>
     <th class="px-6 py-3">
+    Nip
+    </th>
+    <th class="px-6 py-3">
     Nama
     </th>
     <th class="px-6 py-3">
     Email
+    </th>
+    <th class="px-6 py-3">
+    Alamat
+    </th>
+    <th class="px-6 py-3">
+    No.Telepon
     </th>
     <th class="px-6 py-3">
     Tanggal Dibuat
@@ -39,28 +48,36 @@
     </tr>
     </thead>
     <tbody>
-    @foreach ($users as $user)
-    <tr class="bg-white border-b">
-    <th scope="row"
-    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-black">
-    {{ $user->name }}
+        @foreach ($users as $user)
+<tr class="bg-white border-b">
+    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-black">
+        {{ $user->profile ? $user->profile->nip : 'N/A' }}
+    </th>
+    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-black">
+        {{ $user->name }}
     </th>
     <td class="px-6 py-4">
-    {{ $user->email }}
+        {{ $user->email }}
     </td>
     <td class="px-6 py-4">
-    {{ $user->created_at }}
+        {{ $user->profile ? $user->profile->address : 'N/A' }}
     </td>
     <td class="px-6 py-4">
-    <a href="{{ route('user.edit', $user->id) }}" class="text-blue-950 hover:underline">Edit</a>
-    <form action="{{ route('user.destroy', $user->id) }}" method="POST" class="inline">
-        @csrf
-        @method('DELETE')
-        <button type="submit" class="text-red-500 hover:underline">Hapus</button>
-            </form>
+        {{ $user->profile ? $user->profile->phone : 'N/A' }}
     </td>
-    </tr>
-    @endforeach
+    <td class="px-6 py-4">
+        {{ $user->created_at }}
+    </td>
+    <td class="px-6 py-4">
+        <a href="{{ route('user.edit', $user->id) }}" class="text-blue-950 hover:underline">Edit</a>
+        <form action="{{ route('user.destroy', $user->id) }}" method="POST" class="inline">
+            @csrf
+            @method('DELETE')
+            <button type="submit" class="text-red-500 hover:underline">Hapus</button>
+        </form>
+    </td>
+</tr>
+@endforeach
     </tbody>
     </table>
     </div>
