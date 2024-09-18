@@ -25,25 +25,28 @@
     <thead class="text-xs text-gray-700 uppercase bg-gray-50 ">
     <tr>
     <th class="px-6 py-3">
-    Nip
+        Nip
     </th>
     <th class="px-6 py-3">
-    Nama
+        Posisi
     </th>
     <th class="px-6 py-3">
-    Email
+        Nama
     </th>
     <th class="px-6 py-3">
-    Alamat
+        Email
     </th>
     <th class="px-6 py-3">
-    No.Telepon
+        Alamat
     </th>
     <th class="px-6 py-3">
-    Tanggal Dibuat
+        No.Telepon
     </th>
     <th class="px-6 py-3">
-    Action
+        Tanggal Dibuat
+    </th>
+    <th class="px-6 py-3">
+            Action
     </th>
     </tr>
     </thead>
@@ -53,9 +56,12 @@
     <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-black">
         {{ $user->profile ? $user->profile->nip : 'N/A' }}
     </th>
-    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-black">
+    <td class="px-6 py-4">
+        {{ $user->profile->position->position_name ?? 'N/A' }}
+    </td>
+    <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-black">
         {{ $user->name }}
-    </th>
+    </td>
     <td class="px-6 py-4">
         {{ $user->email }}
     </td>

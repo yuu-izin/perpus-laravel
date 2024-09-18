@@ -11,14 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('facilities', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->integer('quantity');
-            $table->unsignedBigInteger('brand_id');
-            $table->timestamps();
+        Schema::table('facilities', function (Blueprint $table) {
+            $table->unsignedBigInteger('brand_id')->nullable();
 
-            // Definisi foreign key untuk brand_id
             $table->foreign('brand_id')->references('id')->on('brands');
         });
     }
@@ -28,6 +23,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('facilities');
+        Schema::table('facilities', function (Blueprint $table) {
+            //
+        });
     }
 };

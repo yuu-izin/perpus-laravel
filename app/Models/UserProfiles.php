@@ -13,11 +13,17 @@ class UserProfiles extends Model
         'nip',
         'address',
         'phone',
+        'position_id',
     ];
 
     // Relasi One To One
     public function user()
     {
-        return $this->hasOne(Userprofiles::class, 'profile_id');
+        return $this->hasOne(User::class, 'profile_id');
+    }
+
+    public function position()
+    {
+        return $this->belongsTo(Position::class, 'position_id');
     }
 }

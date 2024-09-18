@@ -11,15 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('facilities', function (Blueprint $table) {
+        Schema::create('positions', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->integer('quantity');
-            $table->unsignedBigInteger('brand_id');
+            $table->string('position_name');
             $table->timestamps();
-
-            // Definisi foreign key untuk brand_id
-            $table->foreign('brand_id')->references('id')->on('brands');
         });
     }
 
@@ -28,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('facilities');
+        Schema::dropIfExists('positions');
     }
 };

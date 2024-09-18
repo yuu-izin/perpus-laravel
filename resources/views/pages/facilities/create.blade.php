@@ -3,12 +3,12 @@
     <div class="flex justify-between">
     <div>
     <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-    Halaman Tambah Categories
+    Halaman Tambah Facilities
     </h2>
-    <div class="text-sm text-gray-500">Halaman untuk menambahkan Data Categories</div>
+    <div class="text-sm text-gray-500">Halaman untuk menambahkan Data Facilities</div>
     </div>
     <div>
-    <a href="{{ route('categories.index') }}"
+    <a href="{{ route('facilities.index') }}"
     class="bg-blue-950 text-white rounded-md py-2 px-4 text-sm">Kembali</a>
     </div>
     </div>
@@ -29,14 +29,28 @@
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
     <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
     <div class="p-6 text-gray-900">
-    <form action="{{ route('categories.store') }}" method="POST" class="max-w-sm mx-auto">
+    <form action="{{ route('facilities.store') }}" method="POST" class="max-w-sm mx-auto">
     @csrf
+    <div class="mb-5">
+    <label for="brand_name"
+    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama Brand</label>
+    <input type="text" name="brand_name"
+    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+    placeholder="Masukkan Nama Brand" autocomplete="off" required />
+    </div>
     <div class="mb-5">
     <label for="name"
     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama</label>
     <input type="text" name="name"
     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-    placeholder="Masukkan Nama" required />
+    placeholder="Masukkan Nama" autocomplete="off" required />
+    </div>
+    <div class="mb-5">
+    <label for="quantity"
+    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Jumlah</label>
+    <input type="number" name="quantity"
+    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+    placeholder="Masukkan Jumlah" autocomplete="off" required />
     </div>
     <button type="submit"
     class="mt-4 text-white bg-blue-950 font-medium rounded-lg text-sm w-full px-5 py-2.5 text-center ">Submit</button>

@@ -31,6 +31,12 @@
                                 <th class="px-6 py-3">
                                     Name
                                 </th>
+                                <th class="px-6 py-3">
+                                    Waktu
+                                </th>
+                                <th class="px-6 py-3">
+                                    Action
+                                </th>
                             </tr>
                         </thead>
                         <tbody>

@@ -49,7 +49,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/facilities/create', [FacilitiesController::class, 'create'])->name('facilities.create');
     Route::post('/facilities', [FacilitiesController::class, 'store'])->name('facilities.store');
     Route::get('/facilities/{facilities}/edit', [FacilitiesController::class, 'edit'])->name('facilities.edit');
-    Route::put('/facilities/{facilities}/edit', [FacilitiesController::class, 'update'])->name('facilities.update');
+    Route::put('/facilities/{facilities}', [FacilitiesController::class, 'update'])->name('facilities.update');
     Route::delete('/facilities/{facilities}', [FacilitiesController::class, 'destroy'])->name('facilities.destroy');
 
     // categories route

@@ -28,10 +28,16 @@
     No
     </th>
     <th class="px-6 py-3">
+    Brand
+    </th>
+    <th class="px-6 py-3">
     Nama
     </th>
     <th class="px-6 py-3">
     quantity
+    </th>
+    <th class="px-6 py-3">
+    Waktu
     </th>
     <th class="px-6 py-3">
     Action
@@ -45,12 +51,15 @@
     class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-black">
     {{ $loop->iteration }}
     </th>
+    <th class="px-6 py-4">
+    {{ $facilities->brand->name ?? 'N/A' }}
+    </th>
     <th scope="row"
     class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-black">
     {{ $facilities->name }}
     </th>
     <td class="px-6 py-4">
-    {{ $facilities->quantity }}
+    {{ $facilities->quantity }} 
     </td>
     <td class="px-6 py-4">
     {{ $facilities->created_at }}

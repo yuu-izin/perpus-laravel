@@ -23,6 +23,7 @@ class FacilitiesController extends Controller
         public function store(Request $request)
         {
             $request->validate([
+                'brand_name' => ['required'],
                 'name'=>['required'],
                 'quantity' =>['required'],
             ]);
@@ -49,6 +50,7 @@ class FacilitiesController extends Controller
         public function update(Facilities $facilities, Request $request)
         {
             $request->validate([
+                'brand_name' => ['required'],
                 'name'=>['required'],
                 'quantity' =>['required'],
             ]);
@@ -58,6 +60,7 @@ class FacilitiesController extends Controller
             ]);
 
             $facilities->update([
+                'brand_id' => $brand->id,
                 'name'=> $request->name,
                 'quantity' => $request->quantity,
             ]);

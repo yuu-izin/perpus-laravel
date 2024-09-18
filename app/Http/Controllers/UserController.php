@@ -1,8 +1,8 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Position;
 use App\Models\UserProfiles;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -11,10 +11,10 @@ class UserController extends Controller
 {
     public function index()
     {
-        $users = User::with('profile')->get(); // Mengambil user beserta profile
-
-        return view('pages.user.index', compact('users'));
+    $users = User::with('profile.position')->get(); // Mengambil user beserta profile dan position
+    return view('pages.user.index', compact('users'));
     }
+
 
     public function create()
     {
@@ -30,12 +30,16 @@ class UserController extends Controller
             'nip' => ['required', 'string', 'max:50'],
             'address' => ['required', 'string', 'max:255'],
             'phone' => ['required', 'string', 'max:15'],
+            'position_name' => ['required'],
         ]);
+
+        $position = Position::firstOrCreate(['position_name' => $request->position_name]);
 
         $profile = UserProfiles::create([
             'nip' => $request->nip,
             'address' => $request->address,
             'phone' => $request->phone,
+            'position_id' => $position->id,
         ]);
 
         $user = User::create([
@@ -43,11 +47,13 @@ class UserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'position_id' => $position->id,  // Tambahkan baris ini
         ]);
 
         session()->flash('success', 'User created successfully');
         return redirect()->route('user.index');
     }
+
 
     public function edit(User $user)
     {
@@ -64,9 +70,10 @@ class UserController extends Controller
         'nip' => ['required', 'string', 'max:50'],
         'address' => ['required', 'string', 'max:255'],
         'phone' => ['required', 'string', 'max:15'],
+        'position_name' => ['required', 'string', 'max:255'],
     ]);
 
-        if ($user->profile) {
+    if ($user->profile) {
         $user->profile->update([
             'nip' => $request->nip,
             'address' => $request->address,
@@ -80,28 +87,38 @@ class UserController extends Controller
         ]);
     }
 
+    if ($request->filled('position_name')) {
+        $position = Position::firstOrCreate([
+            'position_name' => $request->position_name
+        ]);
+        $user->position_id = $position->id;
+    }
+
     $user->update([
         'name' => $request->name,
         'email' => $request->email,
         'password' => $request->password ? Hash::make($request->password) : $user->password,
     ]);
 
+    if (isset($position)) {
+        $user->position_id = $position->id;
+        $user->save();
+    }
+
     session()->flash('success', 'User updated successfully');
     return redirect()->route('user.index');
 }
 
 
+    public function destroy(User $user)
+    {
+        if ($user->profile) {
+            $user->profile->delete();
+        }
 
-public function destroy(User $user)
-{
-    if ($user->profile) {
-        $user->profile->delete();
+        $user->delete();
+
+        session()->flash('success', 'User deleted successfully');
+        return redirect()->route('user.index');
     }
-
-    $user->delete();
-
-    session()->flash('success', 'User deleted successfully');
-    return redirect()->route('user.index');
-}
-
 }

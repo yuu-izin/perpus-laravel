@@ -26,12 +26,12 @@ class BookshelfsController extends Controller
             'name' => ['required'],
         ]);
 
-        $categories = Bookshelfs::create([
+        Bookshelfs::create([
             'code' => $request->code,
             'name' => $request->name,
         ]);
 
-        session()->flash('success', 'Bookshelfs created successfully');
+        session()->flash('success', 'Bookshelf created successfully');
         return redirect()->route('bookshelfs.index');
     }
 
@@ -52,7 +52,7 @@ class BookshelfsController extends Controller
             'name' => $request->name,
         ]);
 
-        session()->flash('success', 'Bookshelfs updated successfully');
+        session()->flash('success', 'Bookshelf updated successfully');
         return redirect()->route('bookshelfs.index');
     }
 
@@ -60,7 +60,7 @@ class BookshelfsController extends Controller
     {
         $bookshelfs->delete();
 
-        session()->flash('success', 'Bookshelfs deleted successfully');
-        return redirect()->route('bookshelfs .index');
+        session()->flash('success', 'Bookshelf deleted successfully');
+        return redirect()->route('bookshelfs.index'); // Corrected here
     }
 }
