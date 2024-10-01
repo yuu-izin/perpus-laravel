@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Categories;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Book extends Model
 {
@@ -15,9 +16,15 @@ class Book extends Model
         'description',
         'year',
         'publisher',
+        'category_id'
     ];
 
      // Relasi One To One
+    public function category()
+    {
+        return $this->belongsTo(Categories::class);
+    }
+
     public function bookCode()
     {
         return $this->belongsTo(BookCode::class);

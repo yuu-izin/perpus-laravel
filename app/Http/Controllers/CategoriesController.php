@@ -23,10 +23,12 @@ class CategoriesController extends Controller
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
+            'type' => ['required'],
         ]);
 
         $categories = categories::create([
             'name' => $request->name,
+            'type' => $request->type,
         ]);
 
         session()->flash('success', 'Categories created successfully');
@@ -37,10 +39,12 @@ class CategoriesController extends Controller
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
+            'type' => ['required'],
         ]);
 
         $categories->update([
             'name' => $request->name,
+            'type' => $request->type,
         ]);
 
         session()->flash('success', 'Categories updated successfully');

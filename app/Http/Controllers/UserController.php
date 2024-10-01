@@ -11,8 +11,8 @@ class UserController extends Controller
 {
     public function index()
     {
-    $users = User::with('profile.position')->get(); // Mengambil user beserta profile dan position
-    return view('pages.user.index', compact('users'));
+        $users = User::with('profile.position')->get();
+        return view('pages.user.index', compact('users'));
     }
 
 
@@ -91,7 +91,7 @@ class UserController extends Controller
         $position = Position::firstOrCreate([
             'position_name' => $request->position_name
         ]);
-        $user->position_id = $position->id;
+        $user->profile->update(['position_id' => $position->id]); // Update position di profile
     }
 
     $user->update([
@@ -100,14 +100,10 @@ class UserController extends Controller
         'password' => $request->password ? Hash::make($request->password) : $user->password,
     ]);
 
-    if (isset($position)) {
-        $user->position_id = $position->id;
-        $user->save();
-    }
-
     session()->flash('success', 'User updated successfully');
     return redirect()->route('user.index');
 }
+
 
 
     public function destroy(User $user)

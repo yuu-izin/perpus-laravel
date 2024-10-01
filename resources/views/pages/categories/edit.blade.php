@@ -34,10 +34,17 @@
                         @method('PUT')
                         <div class="mb-5">
                             <label for="name"
-                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Title</label>
-                            <input type="text" name="title" value="{{ $categories->name }}"
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
+                            <input type="text" name="name" value="{{ $categories->name }}"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                                placeholder="Masukkan Title" required />
+                                placeholder="Masukkan Name" required />
+                        </div>
+                        <div class="mb-5">
+                            <label for="type"
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Type</label>
+                            <input type="text" name="type" value="{{ $categories->type }}"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                placeholder="Masukkan Type" required />
                         </div>
                         <button type="submit"
                             class="mt-4 text-white bg-blue-950 font-medium rounded-lg text-sm w-full  px-5 py-2.5 text-center ">Submit</button>

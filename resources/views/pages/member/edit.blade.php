@@ -49,21 +49,21 @@
     <div class="mt-5">
     <label for="password"
     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">No Telepon</label>
-    <input type="text" name="phone"
+    <input type="text" name="phone" value="{{ $member->phone }}"
     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
     placeholder="Masukkan No.Telepon" />
     </div>
     <div class="mt-5">
     <label for="gender"
     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Jenis Kelamin</label>
-    <input type="text" name="gender"
+    <input type="text" name="gender" value="{{ $member->gender }}"
     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
     placeholder="Masukkan Jenis Kelamin" />
     </div>
     <div class="mt-5">
     <label for="address"
     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Alamat</label>
-    <input type="text" name="address"
+    <input type="text" name="address" value="{{ $member->address }}"
     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
     placeholder="Masukkan Alamat" />
     </div>

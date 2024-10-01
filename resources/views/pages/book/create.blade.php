@@ -32,8 +32,23 @@
                     <form action="{{ route('book.store') }}" method="POST" class="max-w-sm mx-auto">
                         @csrf
                         <div class="mb-5">
+                            <label for="category_id" class="block mb-2 text-sm font-medium text-gray-900">Category</label>
+                            <select class="form-control bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" id="category_id" name="category_id" required>
+                                <option value="">Select Category</option>
+                                @foreach($categories as $category)
+                                    <option value="{{ $category->id }}" {{ old('category_id') == $category->id ? 'selected' : '' }}>
+                                        {{ $category->type }}
+                                    </option>
+                                @endforeach
+                            </select>
+                            @error('category_id')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <div class="mb-5">
                             <label for="code"
-                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Code</label>
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Code</label>
                             <input type="text" name="code"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                                 placeholder="Masukkan Code" required />
@@ -41,7 +56,7 @@
 
                         <div class="mb-5">
                             <label for="name"
-                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Title</label>
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Title</label>
                             <input type="text" name="title"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                                 placeholder="Masukkan Title" required />
@@ -49,7 +64,7 @@
 
                         <div class="mb-5">
                             <label for="name"
-                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Description</label>
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Description</label>
                             <input type="text" name="description"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                                 placeholder="Masukkan Description" required />
@@ -57,7 +72,7 @@
 
                         <div class="mb-5">
                             <label for="name"
-                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Year</label>
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Year</label>
                             <input type="text" name="year"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                                 placeholder="Masukkan Tahun" required />
@@ -65,7 +80,7 @@
 
                         <div class="mb-5">
                             <label for="name"
-                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Publisher</label>
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Publisher</label>
                             <input type="text" name="publisher"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                                 placeholder="Masukkan publisher" required />

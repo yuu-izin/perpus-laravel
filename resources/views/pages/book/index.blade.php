@@ -32,6 +32,9 @@
                                     Code
                                 </th>
                                 <th class="px-6 py-3">
+                                    Category
+                                </th>
+                                <th class="px-6 py-3">
                                     Title
                                 </th>
                                 <th class="px-6 py-3">
@@ -61,6 +64,10 @@
                                     <th scope="row"
                                     class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-black">
                                     {{ $book->bookCode->code ?? null }}
+                                    </th>
+                                    <th scope="row"
+                                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-black">
+                                    {{ $book->category->type ?? '-' }}
                                     </th>
                                     <th scope="row"
                                         class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-black">
