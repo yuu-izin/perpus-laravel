@@ -35,6 +35,9 @@
                                     Category
                                 </th>
                                 <th class="px-6 py-3">
+                                    Bookshelf
+                                </th>
+                                <th class="px-6 py-3">
                                     Title
                                 </th>
                                 <th class="px-6 py-3">
@@ -67,7 +70,11 @@
                                     </th>
                                     <th scope="row"
                                     class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-black">
-                                    {{ $book->category->type ?? '-' }}
+                                    {{ $book->category->name ?? '-' }}
+                                    </th>
+                                    <th scope="row"
+                                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-black">
+                                    {{ $book->bookshelf->name ?? '-' }}
                                     </th>
                                     <th scope="row"
                                         class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-black">

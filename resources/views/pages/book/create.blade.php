@@ -47,6 +47,18 @@
                         </div>
 
                         <div class="mb-5">
+                            <label for="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Bookshelf:</label>
+                            <select name="book_shelf_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                                <option value="">Pilih Rak Buku</option>
+                                @foreach ($bookshelfs as $bookshelf)
+                                    <option value="{{ $bookshelf->id }}">{{ $bookshelf->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+
+
+                        <div class="mb-5">
                             <label for="code"
                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Code</label>
                             <input type="text" name="code"
@@ -55,7 +67,7 @@
                         </div>
 
                         <div class="mb-5">
-                            <label for="name"
+                            <label for="title"
                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Title</label>
                             <input type="text" name="title"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
@@ -63,7 +75,7 @@
                         </div>
 
                         <div class="mb-5">
-                            <label for="name"
+                            <label for="description"
                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Description</label>
                             <input type="text" name="description"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
@@ -71,7 +83,7 @@
                         </div>
 
                         <div class="mb-5">
-                            <label for="name"
+                            <label for="year"
                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Year</label>
                             <input type="text" name="year"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
@@ -79,7 +91,7 @@
                         </div>
 
                         <div class="mb-5">
-                            <label for="name"
+                            <label for="publisher"
                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Publisher</label>
                             <input type="text" name="publisher"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
